@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrediQT</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+   <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+   <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static',filename='images/logo.png')}}">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="../static/images/logo.png" /> -->
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="{{url_for('static',filename='images/logo.png')}}" alt="">
+        </a>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#prediqt">portal</a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Car Sales Prediction System</h3>
+            <p>See the future with PrediQT..</p>
+            <a href="#prediqt" class="btn">Go to the portal</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h1 class="heading"> <span>about</span> us </h1>
+        <div class="row">
+            <div class="image">
+                <img src="{{url_for('static',filename='images/about-img-01.jpeg')}}" alt="">
+            </div>
+            <div class="content">
+                <h3>what is car sales prediction system?</h3>
+                <p>In this, the system estimates how many cars will be sold in a given month, which will be beneficial for car manufacturers to maintain their estimated stock.
+                </p>
+                <p>We have taken the data of 2016 and 2017 and predicted sales for 2018 for testing purpose.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="prediqt">
+        <h1 class="heading"> Provide <span>Details</span> </h1>
+        <div class="box-container">
+            <div class="box" >
+                <div class="center" >
+                    <div>
+                        <h1><span id="displayText" ></span></h1>
+                        <h1 class="heading"><span id="prediction" class="counter"></span></h1>
+                    </div>
+                <form method="post" accept-charset="utf-8">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">YEAR :</label>
+                            <div class="col-sm-8">
+                                <select aria-label="Default select example" name="YEAR"
+                                    id="YEAR">
+                                    <option selected>2018</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="  col-sm-4 col-form-label">MONTH :</label>
+                            <div class="col-sm-8">
+                                <select aria-label="Default select example" id="MONTH"
+                                    name="MONTH">
+                                    <option selected value="1">January</option>
+
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="  col-sm-4 col-form-label">BODY TYPE :</label>
+                            <div class="col-sm-8">
+                                <select     id="body_type" name="body_type">
+                                    <option value="" selected="selected">Select BODY TYPE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="  col-sm-4 col-form-label">OEM : </label>
+                            <div class="col-sm-8">
+                                <select     id="oem" name="oem">
+                                    <option value="" selected="selected">Please select BODY TYPE first</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="  col-sm-4 col-form-label">MODEL : </label>
+                            <div class="col-sm-8">
+                                <select     id="car" name="car">
+                                    <option value="" selected="selected">Please select OEM first</option>
+                                </select>
+                            </div>
+                        </div> 
+                </form>
+            </div>
+            </div>
+        </div>
+        
+    </section>
+    <div class="btn-center-align" style="margin-bottom: 1.5%;">
+    <button name="signup" id="submit_btn" onclick="send_data()" type="button" class="btn form-control" disabled>Go to the result</button>
+    <button id="go_back_p" type="button" class="btn form-control" disabled>Go to the portal</button>
+</div>
+    
+    <section class="footer">
+        <div class="share">
+            <a href="https://github.com/PrediQTT/Car-Sales-Prediction" target="_blank" class="fab fa-github"></a>
+        </div>
+
+        <div class="links">
+            <a>Project Guide : Prof. K. S. Kadam</a>
+        </div>
+
+        <div class="credit">Developed by : 
+            <span>
+                <a href="https://www.linkedin.com/in/dkte-aditya-galgale/"target="_blank"> Aditya Galgale |</a>
+                <a href="https://www.linkedin.com/in/dkte-prathamesh-gaste/" target="_blank"> Prathamesh Gaste |</a>
+                <a href="https://www.linkedin.com/in/dkterohanghatage/" target="_blank"> Rohan Ghatage |</a>
+                <a href="https://www.linkedin.com/in/dkteomkargurav/" target="_blank"> Omkar Gurav |</a>
+                <a href="https://www.linkedin.com/in/dkteaniketkamble-225157200/" target="_blank"> Aniket Kamble</a>
+            </span>
+        </div>
+    </section>
+
+    <!-- <script src="../static/js/script.js"></script> -->
+    <script src="{{url_for('static',filename='js/script.js')}}"></script>
+  
+</body>
+
+</html>
